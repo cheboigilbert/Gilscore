@@ -24,7 +24,7 @@ export function backendLookup(method, endpoint, callback, data) {
   xhr.responseType = "json"
   const csrftoken = getCookie('csrftoken');
   xhr.open(method, url)
-  xhr.setRequestHeader("Content-Type", "application/json")
+  xhr.setRequestHeader("Content-Type", "multipart/form-data", "application/json")
 
   if (csrftoken){
     // xhr.setRequestHeader("HTTP_X_REQUESTED_WITH", "XMLHttpRequest")

@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import render, redirect
 from django.utils.http import is_safe_url
-
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated
@@ -43,7 +42,16 @@ def profile_detail_api_view(request, username, *args, **kwargs):
                 pass
     serializer = PublicProfileSerializer(instance=profile_obj, context={"request": request})
     return Response(serializer.data, status=200)
-
+@api_view (['GET','POST'])
+def club_detail_api_view(request, username, *args, **kwargs ):
+        qs = Club.objects.filter(user__username=username)
+        if not qs.exist():
+            return Response({"detail": "User not found"}, status=404)
+        club_obj = qs.first()
+        data = request.data 
+    
+        serializer = ClubProfileSerializer(instance=club_obj, context={"request":request})
+        return Response(serializer.data, status=200)
 
 # @api_view(['GET', 'POST'])
 # @permission_classes([IsAuthenticated])

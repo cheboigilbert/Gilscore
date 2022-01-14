@@ -22,6 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '#)=h)_wc*k%f=wk+!$x0t%1wx7*_50$a1%*75s$og(8$27$ju1'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -48,9 +49,19 @@ INSTALLED_APPS = [
     'accounts',
     'profiles',
     'tweets',
+    'NBA',
+    'NFL',
+    'Laliga',
+    'Bundesliga',
+    'Worldcup',
+    'Afcon',
+    'Baseball',
+    'Europa',
+    'Formula1',
+    'Champions',
 ]
 
-MIDDLEWARE = [
+MIDDLEWARE = [      
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
@@ -152,11 +163,13 @@ if DEBUG:
     DEFAULT_RENDERER_CLASSES += [
         'rest_framework.renderers.BrowsableAPIRenderer',
     ]
-    # DEFAULT_AUTHENTICATION_CLASSES += [
-    #     'tweetme2.rest_api.dev.DevAuthentication'
-    # ]
+    DEFAULT_AUTHENTICATION_CLASSES += [
+        'tweetme2.rest_api.dev.DevAuthentication'
+    ]
 REST_FRAMEWORK = {
     
     'DEFAULT_AUTHENTICATION_CLASSES': DEFAULT_AUTHENTICATION_CLASSES,
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES
 }
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
+MEDIA_URL = '/media/'

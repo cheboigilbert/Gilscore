@@ -1,7 +1,8 @@
-import {UserPicture, UserDisplay, UserLink} from './components'
+import {UserPicture, UserDisplay,UserPicture2,  UserLink} from './components'
 import {ProfileBadgeComponent} from './badge'
 export {
     ProfileBadgeComponent,
-    UserPicture, 
+    UserPicture,
+    UserPicture2, 
     UserDisplay, UserLink
 }

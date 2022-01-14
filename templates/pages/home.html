@@ -67,7 +67,7 @@ function handleTweetFormError(msg, display){
         myErrorDiv.setAttribute("class", "d-none alert alert-danger")
     }
 }
-
+ 
 function handleTweetCreateFormDidSumbit(event) {
     event.preventDefault()
     const myForm = event.target
@@ -182,7 +182,7 @@ function RetweetBtn(tweet) {
 
 function UnLikeBtn(tweet) {
     return "<button class='btn btn-outline-primary btn-sm' onclick=handleTweetActionBtn(" + 
-    tweet.id + "," + tweet.likes + ",'unlike')>Unlike</button>"
+    tweet.id + "," + tweet.likes + ",'unlike')>Comments</button>"
 }
 
 function LikeBtn(tweet) {

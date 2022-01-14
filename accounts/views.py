@@ -16,7 +16,7 @@ def login_view(request, *args, **kwargs):
         "btn_label": "Login",
         "title": "Login"
     }
-    return render(request, "accounts/auth.html", context)
+    return render(request, "accounts/auth.html", context) 
 
 def logout_view(request, *args, **kwargs):
     if request.method == "POST":
