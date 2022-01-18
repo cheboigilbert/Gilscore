@@ -5,7 +5,7 @@ export function apiTweetCreate(newTweet, callback){
   }
 
 export function apiCommentCreate(newComment, callback){
-    backendLookup("POST", "/tweets/commentcreate/", callback, {content: newComment})
+    backendLookup("POST", "/tweets/commentcreate/", callback, {content: newComment}, {image: newComment})
   }
 
 export function apiTweetAction(tweetId, action, callback){

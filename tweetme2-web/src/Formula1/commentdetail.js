@@ -2,10 +2,11 @@
 import React, {useState}  from 'react'
 
 import {ActionBtn} from './buttons2'
+import './styles.css';
 
 import {
   UserDisplay,
-  UserPicture2,
+  UserPicture8,
   UserPicture
 } from '../profiles'
 
@@ -42,28 +43,35 @@ export function ParentComment(props){
          {isRetweet === true && <div className='mb-2'>
           <span className='small text-muted'>Retweet via <UserDisplay user={retweeter} /></span>
         </div>}
-        <div className='d-flex'>
+        <div className=''>
        
-          <div className=''>
+          <div className='d-flex'>
             <UserPicture user={comment.user} />
+
+            < div className='col-8'>
+
+            
+                   <UserDisplay includeFullName user={comment.user} />
+
+                    </div>
+              
+            <div   className='col-3'>
+                  <UserPicture8 user={comment.user} />
+
+            </div>
+            
+                
+            
           </div>
-          <div className='col-11'> 
-              <div>
-             
-                <p>
-                  <UserDisplay includeFullName user={comment.user} />
-                </p>
-                 <div align = 'center'  className=''>
 
+              <div className='col-11'> 
+               <div> 
+                 
 
-                  <p>
-
-                   <UserPicture2 user={comment.user} />
-                   </p>
-
-                 </div>
+              
+                
                 <p>{comment.content}</p>
-                <p>{comment.image}</p>
+               <img src = {comment.image} width="400" height="200" className="d-inline-block align-top" alt=""/>
                
                 <ParentComment comment={comment} retweeter={comment.user} />
 
@@ -72,15 +80,14 @@ export function ParentComment(props){
           {(actionComment && hideActions !== true) && <React.Fragment>
                  <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "like", display:"Likes"}}/></div>
 
-                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "unlike", display:"comment"}}/></div>
+                 <div> {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>Comments</button>}</div>
 
-                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "retweet", display:"Retweet"}}/></div>
+                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "retweet", display:"Share"}}/></div>
                 </React.Fragment>
           }
-                  {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>check</button>}
+                  {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>View</button>}
                 </div>
                 </div>
       </div>
       </div>
     }
-  

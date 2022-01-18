@@ -48,10 +48,12 @@ export function ParentComment(props){
           <div className='d-flex'>
             <UserPicture user={comment.user} />
 
-            < div className='col-4'>
+            < div className='col-8'>
 
             
                    <UserDisplay includeFullName user={comment.user} />
+
+                    </div>
               
             <div   className='col-3'>
                   <UserPicture2 user={comment.user} />
@@ -59,7 +61,7 @@ export function ParentComment(props){
             </div>
             
                 
-            </div>
+            
           </div>
 
               <div className='col-11'> 
@@ -78,12 +80,12 @@ export function ParentComment(props){
           {(actionComment && hideActions !== true) && <React.Fragment>
                  <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "like", display:"Likes"}}/></div>
 
-                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "unlike", display:"comment"}}/></div>
+                 <div> {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>Comments</button>}</div>
 
-                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "retweet", display:"Retweet"}}/></div>
+                 <div> <ActionBtn comment={actionComment} didPerformAction={handlePerformAction} action={{type: "retweet", display:"Share"}}/></div>
                 </React.Fragment>
           }
-                  {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>check</button>}
+                  {isDetail === true ? null : <button className='btn btn-outline-primary btn-sm' onClick={handleLink}>View</button>}
                 </div>
                 </div>
       </div>
